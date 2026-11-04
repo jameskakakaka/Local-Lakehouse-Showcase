@@ -1,0 +1,27 @@
+name: 'local_lakehouse'
+version: '1.0.0'
+config-version: 2
+
+# This must match the root key in profiles.yml
+profile: 'dbt_trino'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  local_lakehouse:
+    # Materialize everything as tables by default in Iceberg
+    +materialized: table
+    staging:
+      +schema: silver
+    marts:
+      +schema: gold
+

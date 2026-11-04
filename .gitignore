@@ -1,0 +1,55 @@
+# Python and build artifacts
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+*.egg-info/
+
+# Local credentials (only sanitized examples belong in Git)
+.env
+.env.*
+!.env.example
+*.local.yml
+*.local.yaml
+*.local.properties
+secrets/
+.aws/
+*.pem
+*.key
+
+# Local data and orchestration state
+/data/
+*.parquet
+.tmp_dagster_home_*/
+.dagster/
+dagster_home/
+/dagster.yaml
+/history/
+/storage/
+/schedules/
+
+# dbt output; retain models, macros, tests and fixture JSON/CSV
+**/target/
+**/logs/
+**/dbt_packages/
+**/.user.yml
+
+# Scratch audit output and retained execution evidence
+/audits/
+/phase-evidence/
+*.tmp
+*.part
+*.swp
+*~
+.DS_Store
+
+# Never publish local database files or their sidecars
+*.db
+*.sqlite
+*.sqlite3
+*-wal
+*-shm

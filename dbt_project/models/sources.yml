@@ -1,0 +1,30 @@
+version: 2
+
+sources:
+  - name: raw_taxi
+    description: "Raw NYC Taxi data ingested into Iceberg"
+    database: iceberg
+    schema: raw
+    tables:
+      - name: yellow_trips
+        description: "Jan 2024 Yellow Taxi trip records"
+        columns:
+          - name: source_file_sha256
+            data_tests:
+              - not_null
+              - dq_condition:
+                  name: raw_sha256_format
+                  arguments:
+                    condition: "regexp_like(source_file_sha256, '^[0-9a-fA-F]{64}$')"
+          - name: source_row_number
+            data_tests:
+              - not_null
+              - dq_condition:
+                  name: raw_nonnegative_position
+                  arguments:
+                    condition: "source_row_number >= 0"
+        data_tests:
+          - dq_unique_combination:
+              name: raw_unique_provenance
+              arguments:
+                columns: [source_file_sha256, source_row_number]

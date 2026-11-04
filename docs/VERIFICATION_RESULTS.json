@@ -1,0 +1,71 @@
+{
+  "checks": {
+    "manifest_and_metadata_scan": "PASS",
+    "syntax_ci_and_documentation_links": "PASS",
+    "offline_unittest": {
+      "run": 74,
+      "passed": 70,
+      "skipped": 4,
+      "errors": 0,
+      "failures": 0
+    },
+    "dbt_parse": {
+      "tests": 11,
+      "schemas": {
+        "fct_daily_trips": "gold",
+        "stg_yellow_trips": "silver"
+      }
+    },
+    "dbt_reusable": {
+      "tests": 11,
+      "schemas": {
+        "fct_daily_trips": "gold",
+        "stg_yellow_trips": "silver"
+      }
+    },
+    "dbt_acceptance": {
+      "tests": 12,
+      "schemas": {
+        "fct_daily_trips": "gold",
+        "stg_yellow_trips": "silver"
+      }
+    },
+    "dbt_dev": {
+      "tests": 11,
+      "schemas": {
+        "fct_daily_trips": "silver_gold",
+        "stg_yellow_trips": "silver_silver"
+      }
+    },
+    "dagster_definitions_and_lineage": "PASS",
+    "application_import_origin": {
+      "modules": 10,
+      "all_within_candidate": true
+    },
+    "uv_lock_offline": "PASS",
+    "gitignore_source_visibility": "PASS",
+    "compose_dummy_configuration": {
+      "success_cases": 1,
+      "required_input_rejections": 7
+    }
+  },
+  "limitations": [
+    "Existing dependency environment reused; fresh installation and hosted CI not run.",
+    "No live acceptance, credentials, policy, image or service state verified.",
+    "Heuristic secret scan only; no dedicated scanner or vulnerability database.",
+    "Dataset redistribution rights and remote credential exposure not queried."
+  ],
+  "scanner": {
+    "files_scanned": 50,
+    "findings": [],
+    "method": "allowlist, filename, credential-literal and common token/private-path patterns"
+  },
+  "unittest": {
+    "run": 74,
+    "passed": 70,
+    "skipped": 4,
+    "errors": 0,
+    "failures": 0
+  },
+  "status": "PASS"
+}

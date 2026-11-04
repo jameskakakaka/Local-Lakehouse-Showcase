@@ -1,0 +1,372 @@
+{
+  "schema_version": 1,
+  "include": [
+    {
+      "path": ".env.example",
+      "sha256": "80e23a4e4f8ce29c910a97adcb77ae70e09a1ff77b3ee02c872095c208f28e69",
+      "bytes": 675,
+      "origin": "working-tree"
+    },
+    {
+      "path": ".gitattributes",
+      "sha256": "1a1dbe176bc233b499d35a57db7513f2941c99ab9759f177830c9149be99005b",
+      "bytes": 66,
+      "origin": "working-tree"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "19db62fdfa8e6843085dcb21e079cd5cc945ac9048d7ff9b30385d8fc1ba52dc",
+      "bytes": 2335,
+      "origin": "working-tree"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "60b4e0a6dac3d18289b06d14920a736b243bf47d239d1b707ec398c2ab9649bc",
+      "bytes": 750,
+      "origin": "candidate-specific"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "3bcaa70dca8078648db1e34e4be942f96f5fea6b81b6128159fd846e59c577aa",
+      "bytes": 1062,
+      "origin": "working-tree"
+    },
+    {
+      "path": "README.md",
+      "sha256": "aa76ced2f6014b067f19273efa8a4ea85453df9d477d47622ac899c5d2694acf",
+      "bytes": 5667,
+      "origin": "candidate-specific"
+    },
+    {
+      "path": "dbt_project/dbt_project.yml",
+      "sha256": "d7e3b717f3e4796fb88d0474a5d3a085c24be8ec176faead2eec4f6e2f7de909",
+      "bytes": 509,
+      "origin": "working-tree"
+    },
+    {
+      "path": "dbt_project/macros/generate_schema_name.sql",
+      "sha256": "f9c8f18dc74915a85e012acf7c4afc798ac08be42e54b3e275e50d49e73584da",
+      "bytes": 678,
+      "origin": "working-tree"
+    },
+    {
+      "path": "dbt_project/models/data_quality.yml",
+      "sha256": "630072f51d7bed467f52ec01914009f592e8e6d9252a2c136a8c66f417a362a7",
+      "bytes": 559,
+      "origin": "working-tree"
+    },
+    {
+      "path": "dbt_project/models/marts/fct_daily_trips.sql",
+      "sha256": "16c84ace03a1c928d6e9112fb544792ed80766e277af92cc962a91f02b232581",
+      "bytes": 664,
+      "origin": "working-tree"
+    },
+    {
+      "path": "dbt_project/models/sources.yml",
+      "sha256": "cc4a6b270a03f75bbb462a2a7d907cf9740cc0f5dd4440457b35b3111f62df53",
+      "bytes": 959,
+      "origin": "working-tree"
+    },
+    {
+      "path": "dbt_project/models/staging/stg_yellow_trips.sql",
+      "sha256": "6edc09a626397af64416e06d7706e1f561996d5c432c9c1858f333b4a2cde912",
+      "bytes": 742,
+      "origin": "working-tree"
+    },
+    {
+      "path": "dbt_project/tests/README.md",
+      "sha256": "1990da5de0e6edfa543a2d1c530d98681888499fdd682882569b7fc7004089f0",
+      "bytes": 3581,
+      "origin": "working-tree"
+    },
+    {
+      "path": "dbt_project/tests/generic/dq_assertions.sql",
+      "sha256": "d448dcea62ebd6632812428f7e4a348adc42a88b37f1115d4260bbd879f8bd20",
+      "bytes": 346,
+      "origin": "working-tree"
+    },
+    {
+      "path": "dbt_project/tests/gold_reconciliation.sql",
+      "sha256": "20b0c13b809455244b8b44cff0bf69027c990c8f583cfb37326cb429ab7f22f5",
+      "bytes": 5631,
+      "origin": "working-tree"
+    },
+    {
+      "path": "dbt_project/tests/raw_acceptance_coverage.sql",
+      "sha256": "ca5b1110886f779c057c6d433b3cc5fef1c9c6a494d30d1226e169c880eed640",
+      "bytes": 723,
+      "origin": "working-tree"
+    },
+    {
+      "path": "dbt_project/tests/silver_occurrence_reconciliation.sql",
+      "sha256": "cb20d002efd721d840b6b8f4685953c214831fd4fd106c8cf2bab3a3a21aa9d4",
+      "bytes": 1513,
+      "origin": "working-tree"
+    },
+    {
+      "path": "dbt_project/tests/silver_row_count.sql",
+      "sha256": "970150aef5595ed73025934baba40232f72d13c9581b7b588ade5dc13337785b",
+      "bytes": 325,
+      "origin": "working-tree"
+    },
+    {
+      "path": "docker-compose.yml",
+      "sha256": "8aa8e4f4e03ca7e1f569aa417caa81614203d5cfbdb758723de974235deedfda",
+      "bytes": 8152,
+      "origin": "working-tree"
+    },
+    {
+      "path": "docs/DEVELOPMENT.md",
+      "sha256": "f90ee4c6915feb216c1963800865e171f881f474f09b1b55b270e5e314cd35cc",
+      "bytes": 3646,
+      "origin": "candidate-specific"
+    },
+    {
+      "path": "docs/PORTFOLIO.md",
+      "sha256": "b351aa4b2b32232270fd7a485f91fdd728b8c86256dac9734f09634d9501f2a0",
+      "bytes": 1025,
+      "origin": "candidate-specific"
+    },
+    {
+      "path": "docs/RELEASE_READINESS.md",
+      "sha256": "935885a91a55d4485755916b37dc430e6a71bc509a0cfe5ed8bb0aa6159cc2b6",
+      "bytes": 1936,
+      "origin": "candidate-specific"
+    },
+    {
+      "path": "docs/SECURITY.md",
+      "sha256": "7a2303c3e4b0dc732a4240e46928a94bf8580c132460890a3a93108231917c33",
+      "bytes": 4922,
+      "origin": "candidate-specific"
+    },
+    {
+      "path": "lakehouse_pipeline/__init__.py",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1,
+      "origin": "working-tree"
+    },
+    {
+      "path": "lakehouse_pipeline/assets/__init__.py",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1,
+      "origin": "working-tree"
+    },
+    {
+      "path": "lakehouse_pipeline/assets/dbt_assets.py",
+      "sha256": "636197d3923d26e80e249abe7decf40e6c2de4b6da637ef0aff244968012005f",
+      "bytes": 1608,
+      "origin": "working-tree"
+    },
+    {
+      "path": "lakehouse_pipeline/assets/iceberg_setup.py",
+      "sha256": "597302cdfcfcb01a7d86a6fd49fa97d2f102e533627dd01758d5ecad4803bdb7",
+      "bytes": 679,
+      "origin": "working-tree"
+    },
+    {
+      "path": "lakehouse_pipeline/assets/ingestion.py",
+      "sha256": "b674a2c22c9cf6404fb4e433a681131988daf7504f3007ffbcdb63597220dc0a",
+      "bytes": 3755,
+      "origin": "working-tree"
+    },
+    {
+      "path": "lakehouse_pipeline/assets/ingestion_support.py",
+      "sha256": "0d126639e506ba7c6974a32c82eeec00ed2f1b79ddadd4e6c896b5ac3f9a4590",
+      "bytes": 7734,
+      "origin": "working-tree"
+    },
+    {
+      "path": "lakehouse_pipeline/assets/source_acquisition.py",
+      "sha256": "11268acb5ee42007b5a9123e81e4cdcfa1dbe9c62b1e5debf3661e9fedc21745",
+      "bytes": 7617,
+      "origin": "working-tree"
+    },
+    {
+      "path": "lakehouse_pipeline/definitions.py",
+      "sha256": "a6ecfdc6c2275c5d2471d7b37a6ec1c6004b646855baed4daec676e5c1f686ad",
+      "bytes": 1563,
+      "origin": "working-tree"
+    },
+    {
+      "path": "lakehouse_pipeline/resources/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "origin": "working-tree"
+    },
+    {
+      "path": "lakehouse_pipeline/resources/minio_resource.py",
+      "sha256": "c85bbb969ac9ca4b0c5dd2bb779dd4ad2ec1ea963f5d1192824a6a11f354f3bb",
+      "bytes": 770,
+      "origin": "working-tree"
+    },
+    {
+      "path": "lakehouse_pipeline/resources/trino_resource.py",
+      "sha256": "fce9269faed857b74a07aa711fdc2f17ec5c312485a17f89caedf4b2eab688b1",
+      "bytes": 608,
+      "origin": "working-tree"
+    },
+    {
+      "path": "lakehouse_pipeline/trino/catalog/iceberg.properties",
+      "sha256": "f2e17a6753626961f533e9120f8afa3c0ab39f52cc90298d4cfc826df72a9db0",
+      "bytes": 352,
+      "origin": "working-tree"
+    },
+    {
+      "path": "lakehouse_pipeline/trino/profiles.yml",
+      "sha256": "52f515ae022cbe8afcad5c73575cb5a6277b1cddef6ebb6955da141897fd1c89",
+      "bytes": 606,
+      "origin": "working-tree"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "8b198c5cb128812e4996630617318529f1a121afd6692ebdfdb874a4ff74ba00",
+      "bytes": 643,
+      "origin": "working-tree"
+    },
+    {
+      "path": "scripts/verify_candidate.py",
+      "sha256": "5cbb1353032e2d6b644f566571ddb409838fe114950f383ec300aed0759df1da",
+      "bytes": 12584,
+      "origin": "candidate-specific"
+    },
+    {
+      "path": "tests/integration/README.md",
+      "sha256": "a9ce3f384a8aa5f18b5dbafb5b0df314229ace5764ec6cd7e7638c1fd01c5696",
+      "bytes": 2810,
+      "origin": "working-tree"
+    },
+    {
+      "path": "tests/integration/__init__.py",
+      "sha256": "7215238bb5d4b51f06ccba1c0a0ad4166c4f44c4337eae97d15b39f16a8347b8",
+      "bytes": 74,
+      "origin": "working-tree"
+    },
+    {
+      "path": "tests/integration/test_trino_iceberg.py",
+      "sha256": "07aa9d49ea0d17b7a0351f9aaea9e88c4d30dd9fe448ecb0d391719ac56fade4",
+      "bytes": 10994,
+      "origin": "working-tree"
+    },
+    {
+      "path": "tests/test_configuration.py",
+      "sha256": "49626c1a2de8f7268101d92574983e9e2279528dc3385a845cf6b7460abca049",
+      "bytes": 3951,
+      "origin": "working-tree"
+    },
+    {
+      "path": "tests/test_connection_cleanup.py",
+      "sha256": "90db9933b3e9bd31688e244dcbae9c6ccb80708cf3343c66c77eebc61aff84fd",
+      "bytes": 3736,
+      "origin": "working-tree"
+    },
+    {
+      "path": "tests/test_ingestion_idempotency.py",
+      "sha256": "d4c7e948b3977225c35f4a26942c371eb3f00be6073f67a4ff3fd8b0a808db0c",
+      "bytes": 13702,
+      "origin": "working-tree"
+    },
+    {
+      "path": "tests/test_integration_safety.py",
+      "sha256": "d43d21018c4c3bbd4203946f15980148a57c4df180505a9f1a9d37f461796d63",
+      "bytes": 8750,
+      "origin": "working-tree"
+    },
+    {
+      "path": "tests/test_minio_resource.py",
+      "sha256": "08057f59b6d0fdb7d39dd61f320ad36e71b3f0f62041c03f19690379b12d9579",
+      "bytes": 2003,
+      "origin": "working-tree"
+    },
+    {
+      "path": "tests/test_source_acquisition.py",
+      "sha256": "07c4ec3185d8a42c4c1fb327060d0f72f243bab2cd136a900ae52b35d083497f",
+      "bytes": 15497,
+      "origin": "working-tree"
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "b2c2ef2075450eb3ef11215ffb515fb7f3407be5dad16e61d41037b209e35a80",
+      "bytes": 1096092,
+      "origin": "working-tree"
+    }
+  ],
+  "generated_files": [
+    "PUBLICATION_MANIFEST.json",
+    "docs/VERIFICATION_RESULTS.json"
+  ],
+  "exclude": [
+    {
+      "patterns": [
+        ".git/**"
+      ],
+      "reason": "Original history is not exported"
+    },
+    {
+      "patterns": [
+        ".env",
+        ".env.* (except .env.example)",
+        "secrets/**",
+        ".aws/**",
+        "*.pem",
+        "*.key"
+      ],
+      "reason": "Local credentials and private material"
+    },
+    {
+      "patterns": [
+        "*.db",
+        "*.sqlite*",
+        ".tmp_dagster_home_*/**",
+        ".dagster/**",
+        "dagster_home/**",
+        "history/**",
+        "storage/**",
+        "schedules/**"
+      ],
+      "reason": "Runtime databases and development state"
+    },
+    {
+      "patterns": [
+        "data/**",
+        "*.parquet",
+        "Docker volume contents"
+      ],
+      "reason": "Persistent data and unreviewed dataset redistribution"
+    },
+    {
+      "patterns": [
+        ".venv/**",
+        "**/__pycache__/**",
+        "**/target/**",
+        "**/logs/**",
+        "**/dbt_packages/**",
+        "**/.user.yml",
+        "*.tmp",
+        "*.part"
+      ],
+      "reason": "Generated outputs and caches"
+    },
+    {
+      "patterns": [
+        "private-audits/**",
+        "private-evidence/**",
+        "private audit documents"
+      ],
+      "reason": "Private security evidence is excluded; public documentation is candidate-specific"
+    }
+  ],
+  "manual_review": [
+    {
+      "category": "Ambiguous development artifacts and private security evidence",
+      "disposition": "Excluded pending explicit private review"
+    },
+    {
+      "category": "Original LICENSE authorship and upstream dataset terms",
+      "disposition": "MIT license retained; no third-party dataset distributed; confirm rights before adding data"
+    },
+    {
+      "category": "Historical credential response and runtime security",
+      "disposition": "Operator approval gates; not resolved by export"
+    }
+  ]
+}

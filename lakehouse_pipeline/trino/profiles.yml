@@ -1,0 +1,16 @@
+dbt_trino:
+  # Controlled local acceptance only; other environments must select their own target.
+  target: local_acceptance
+  outputs:
+    dev: &local_connection
+      type: trino
+      method: none # No password needed for local Trino
+      user: admin
+      host: localhost
+      port: 8085 # Matches our docker-compose exposed port
+      catalog: iceberg # Our Iceberg REST catalog
+      schema: silver # Namespace prefix retained for dev and other non-acceptance targets
+      threads: 4
+    # Reuse the local connection without changing credentials.
+    local_acceptance:
+      <<: *local_connection

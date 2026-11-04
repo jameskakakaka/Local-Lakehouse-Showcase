@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: stg_yellow_trips
+    data_tests:
+      - dq_condition:
+          name: silver_filters
+          arguments:
+            condition: "trip_distance > 0 and fare_amount > 0"
+  - name: fct_daily_trips
+    data_tests:
+      - dq_unique_combination:
+          name: gold_unique_group_keys
+          arguments:
+            columns: [pickup_date, pickup_day_of_week]
+      - dq_condition:
+          name: gold_valid_group_keys
+          arguments:
+            condition: "pickup_day_of_week is not distinct from day_of_week(pickup_date)"

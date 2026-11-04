@@ -1,0 +1,58 @@
+name: Offline CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  offline:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      RUN_TRINO_ICEBERG_TESTS: "0"
+      DBT_SEND_ANONYMOUS_USAGE_STATS: "false"
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version: "0.13.6"
+          python-version: "3.12"
+          enable-cache: false
+      - name: Install locked dependencies
+        run: uv sync --locked
+      - name: Offline unit tests (live tests must skip)
+        run: env -u RUN_TRINO_ICEBERG_TESTS uv run --no-sync python -W error -m unittest discover -s tests -v
+      - name: Parse dbt without connecting to Trino
+        run: >-
+          uv run --no-sync dbt parse
+          --project-dir dbt_project --profiles-dir lakehouse_pipeline/trino
+          --target-path "${{ runner.temp }}/dbt-target"
+          --log-path "${{ runner.temp }}/dbt-logs" --no-partial-parse
+      - name: Discover dbt tests without executing SQL
+        run: >-
+          uv run --no-sync dbt ls
+          --project-dir dbt_project --profiles-dir lakehouse_pipeline/trino
+          --target-path "${{ runner.temp }}/dbt-target"
+          --log-path "${{ runner.temp }}/dbt-logs"
+          --resource-type test --output name
+      - name: Compile dbt without database introspection
+        run: >-
+          uv run --no-sync dbt compile
+          --project-dir dbt_project --profiles-dir lakehouse_pipeline/trino
+          --target local_acceptance --vars '{dq_local_acceptance: true}'
+          --target-path "${{ runner.temp }}/dbt-acceptance-target"
+          --log-path "${{ runner.temp }}/dbt-acceptance-logs"
+          --no-partial-parse --no-introspect --no-populate-cache
+      - name: Discover acceptance tests without executing SQL
+        run: >-
+          uv run --no-sync dbt ls
+          --project-dir dbt_project --profiles-dir lakehouse_pipeline/trino
+          --target local_acceptance --vars '{dq_local_acceptance: true}'
+          --target-path "${{ runner.temp }}/dbt-acceptance-target"
+          --log-path "${{ runner.temp }}/dbt-acceptance-logs"
+          --resource-type test --output name
