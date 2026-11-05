@@ -33,7 +33,7 @@ class CustomDbtTranslator(DagsterDbtTranslator):
         return "transforms"
 
 @dbt_assets(
-    manifest=dbt_project.manifest_path, 
+    manifest=dbt_project.manifest_path,
     dagster_dbt_translator=CustomDbtTranslator()
 )
 def lakehouse_dbt_assets(context: AssetExecutionContext, dbt: DbtCliResource):

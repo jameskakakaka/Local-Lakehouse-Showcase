@@ -41,6 +41,8 @@ dagster_home/
 # Scratch audit output and retained execution evidence
 /audits/
 /phase-evidence/
+private-audits/
+private-evidence/
 *.tmp
 *.part
 *.swp

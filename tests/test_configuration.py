@@ -70,4 +70,3 @@ class ConfigurationTests(unittest.TestCase):
         self.assertEqual(names, {'MINIO_ROOT_USER', 'MINIO_ROOT_PASSWORD', 'POSTGRES_USER',
                                  'POSTGRES_PASSWORD', 'LAKEHOUSE_S3_ACCESS_KEY_ID',
                                  'LAKEHOUSE_S3_SECRET_ACCESS_KEY'})
-

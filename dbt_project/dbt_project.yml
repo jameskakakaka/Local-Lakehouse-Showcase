@@ -24,4 +24,3 @@ models:
       +schema: silver
     marts:
       +schema: gold
-

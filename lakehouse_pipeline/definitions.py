@@ -42,6 +42,6 @@ defs = Definitions(
             profiles_dir=dbt_project.profiles_dir,
         ),
         # This matches the argument name 'trino_resource' we used in our ingestion.py functions
-        "trino_resource": TrinoResource(), 
+        "trino_resource": TrinoResource(),
     },
 )

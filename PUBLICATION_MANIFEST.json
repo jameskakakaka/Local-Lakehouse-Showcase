@@ -21,8 +21,8 @@
     },
     {
       "path": ".gitignore",
-      "sha256": "60b4e0a6dac3d18289b06d14920a736b243bf47d239d1b707ec398c2ab9649bc",
-      "bytes": 750,
+      "sha256": "943e8a00f2f489393959f4a4c87758f38d7dcce2fce603bf2b397d7777c90b30",
+      "bytes": 784,
       "origin": "candidate-specific"
     },
     {
@@ -39,8 +39,8 @@
     },
     {
       "path": "dbt_project/dbt_project.yml",
-      "sha256": "d7e3b717f3e4796fb88d0474a5d3a085c24be8ec176faead2eec4f6e2f7de909",
-      "bytes": 509,
+      "sha256": "885856b659c10273e4ec9515637f2c6ee20791aaf868603a7a6ef9f31a8d111e",
+      "bytes": 508,
       "origin": "working-tree"
     },
     {
@@ -69,8 +69,8 @@
     },
     {
       "path": "dbt_project/models/staging/stg_yellow_trips.sql",
-      "sha256": "6edc09a626397af64416e06d7706e1f561996d5c432c9c1858f333b4a2cde912",
-      "bytes": 742,
+      "sha256": "65a75b9e7ac3998086ac655b60cb9601a63b8b91f40a9542a56f01c5dde30e6b",
+      "bytes": 725,
       "origin": "working-tree"
     },
     {
@@ -153,8 +153,8 @@
     },
     {
       "path": "lakehouse_pipeline/assets/dbt_assets.py",
-      "sha256": "636197d3923d26e80e249abe7decf40e6c2de4b6da637ef0aff244968012005f",
-      "bytes": 1608,
+      "sha256": "0d638506c7143e78cd89ac020c86f20d23708de9650758f53be81e3cbb1f2f14",
+      "bytes": 1607,
       "origin": "working-tree"
     },
     {
@@ -183,8 +183,8 @@
     },
     {
       "path": "lakehouse_pipeline/definitions.py",
-      "sha256": "a6ecfdc6c2275c5d2471d7b37a6ec1c6004b646855baed4daec676e5c1f686ad",
-      "bytes": 1563,
+      "sha256": "c5cf43cedd4c30751edff00ee1f46f3bef49060c27e9c2c74afe3be6234e02ee",
+      "bytes": 1562,
       "origin": "working-tree"
     },
     {
@@ -207,8 +207,8 @@
     },
     {
       "path": "lakehouse_pipeline/trino/catalog/iceberg.properties",
-      "sha256": "f2e17a6753626961f533e9120f8afa3c0ab39f52cc90298d4cfc826df72a9db0",
-      "bytes": 352,
+      "sha256": "d54e8088d8c9904147f5685a6ac938924b386f6fc2d8b1c1636d618bbc1e8b01",
+      "bytes": 351,
       "origin": "working-tree"
     },
     {
@@ -249,8 +249,8 @@
     },
     {
       "path": "tests/test_configuration.py",
-      "sha256": "49626c1a2de8f7268101d92574983e9e2279528dc3385a845cf6b7460abca049",
-      "bytes": 3951,
+      "sha256": "e4954dae23274ce9a2309858c64abba4d1e523714d341eae11df4faa7d6e5543",
+      "bytes": 3950,
       "origin": "working-tree"
     },
     {
