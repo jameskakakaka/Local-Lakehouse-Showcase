@@ -52,8 +52,8 @@ changing from existing identities is a separate coordinated migration.
    are not evidence of denied authorization. Discard bodies; keep object paths
    private. Recheck signed reads and read-only dbt tests with --no-store-failures.
 7. Abort on authentication failures, missing catalog objects, changed volume
-   identity or regressions. Restore private configuration with the same images,
-   credentials and volumes; do not recreate data. Restoring a public policy
+   identity or regressions. Use current verified credentials with the same images and volumes; do not
+   automatically reinstate an exposed credential or recreate data. Restoring a public policy
    reopens access and requires explicit approval. Resume producers after checks.
 
 ## Prior exposure response
@@ -63,9 +63,12 @@ running deployment. The operator must assess prior distribution and credential
 reuse privately, coordinate replacement across all consumers, verify replacement,
 then revoke old identities/passwords and verify rejection. PostgreSQL password
 changes require a database operation; changing Compose inputs alone is insufficient.
-No values, private historical references or original runtime records belong here.
+No credential values, private history references or original runtime records belong here.
 Original historical evidence must remain private. Do not import the original Git
-history into this candidate. Rotation and runtime activation were not performed.
+history into this candidate. For the separately operated local deployment, A and B were completed on
+2026-11-06: exposed credentials were rejected, replacement consumers verified,
+and anonymous warehouse listing/reads denied. This historical disposition is
+not a live check by this source-only verifier; private evidence is not exported.
 
 ## Supply chain and scanner limits
 
@@ -73,6 +76,25 @@ Python versions are locked and action references are pinned. Some container imag
 references still float; review and pin verified versions/digests before deployment.
 The included metadata-only scanner checks all allowlisted text for common secret
 formats, credential assignment literals, private paths, prohibited artifacts and
-symlinks. It emits file/rule metadata, never matching values. No dedicated scanner
-was available during export; heuristic checks cannot certify absence of secrets.
-No dependency vulnerability service or remote state was queried.
+symlinks. It emits file/rule metadata, never matching values. Dedicated fully redacted Gitleaks directory/history scans and an existing
+Actions-log review were subsequently completed. Final release scans are recorded
+in [release evidence](RELEASE_READINESS.md); heuristic checks alone cannot certify
+absence of secrets.
+No dependency vulnerability service was queried. Source verification does not
+probe live operational services; repository visibility and hosted CI are reviewed separately.
+
+## Template and operational limitations
+
+The template shares one externally supplied non-root S3 pair across REST, Trino
+and the optional host resource. Separate scoped identities and pinned digests
+were verified operationally, but are not provisioned by this source template.
+The template's container-local alias setup passes administrative values as
+arguments inside the init container; use a reviewed environment-based private
+launcher when command-argument isolation is required. No live initializer or
+credential change is performed by publication checks.
+
+REST/Trino frontend authentication is not configured. The existing JDBC role
+retains elevated privileges. Backups are local and unencrypted. Ports bind
+loopback; these choices are acceptable only for the documented isolated local
+prototype and are not production assurances. Do not expose the stack publicly.
+Public source publication does not publish the operator's private runtime files.

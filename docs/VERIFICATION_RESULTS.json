@@ -50,10 +50,13 @@
     }
   },
   "limitations": [
-    "Existing dependency environment reused; fresh installation and hosted CI not run.",
-    "No live acceptance, credentials, policy, image or service state verified.",
-    "Heuristic secret scan only; no dedicated scanner or vulnerability database.",
-    "Dataset redistribution rights and remote credential exposure not queried."
+    "Offline verifier does not execute live SQL or establish current deployment health.",
+    "Four live write integration cases were skipped; no full materialization ran.",
+    "Prior clean installation was reused with matching lock and installed versions.",
+    "Dedicated release scans are recorded separately outside the source repository.",
+    "Hosted CI for the final local SHA still requires an approved private push.",
+    "REST/Trino frontend authentication, elevated database privileges and local unencrypted backups remain.",
+    "Full-month ingestion, production-scale performance and general concurrent-writer safety are unverified."
   ],
   "scanner": {
     "files_scanned": 50,
@@ -67,5 +70,40 @@
     "errors": 0,
     "failures": 0
   },
-  "status": "PASS"
+  "status": "PASS",
+  "verification_date_utc": "2026-11-08T03:50:32.658453+00:00",
+  "evidence_scope": "Final source-only publication tree verified offline; reports and install environment outside repository.",
+  "dependency_environment": {
+    "python": "3.12.3",
+    "uv": "0.13.6",
+    "lock_consistent": true,
+    "installed_locked_distributions_checked": 127,
+    "clean_install_previously_verified": true,
+    "lock_unchanged_since_clean_install": true,
+    "installation_repeated": false
+  },
+  "historical_operational_evidence": {
+    "verified_on": "2026-11-06",
+    "A_status": "A_COMPLETE",
+    "B_status": "B_COMPLETE",
+    "old_credentials_rejected": true,
+    "anonymous_warehouse_list_read_denied": true,
+    "raw_occurrences": 10000,
+    "silver_rows": 9737,
+    "gold_groups": 2,
+    "dbt_acceptance_pass": 12,
+    "readable_Iceberg_tables": 11,
+    "verified_object_hashes": 204,
+    "full_Dagster_materialization_performed": false,
+    "repeated_during_release_checks": false
+  },
+  "publication_gates": {
+    "rights_and_commit_metadata": "OWNER_CONFIRMED_2026-11-08",
+    "final_private_push": "AWAITING_EXPLICIT_APPROVAL",
+    "exact_final_SHA_hosted_CI": "PENDING_PRIVATE_PUSH",
+    "public_visibility": "AWAITING_SEPARATE_APPROVAL",
+    "prior_root_CI_run": 41825427315,
+    "prior_root_CI_SHA": "649ad267291fca4b6fcefa39918ebaf3b3fd6b3a",
+    "prior_root_CI_conclusion": "success"
+  }
 }

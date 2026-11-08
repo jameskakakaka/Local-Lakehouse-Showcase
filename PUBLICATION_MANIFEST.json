@@ -3,8 +3,8 @@
   "include": [
     {
       "path": ".env.example",
-      "sha256": "80e23a4e4f8ce29c910a97adcb77ae70e09a1ff77b3ee02c872095c208f28e69",
-      "bytes": 675,
+      "sha256": "4676777021013124cf90e3e6a2804b158ae33a8caf074197c654aaa609761413",
+      "bytes": 766,
       "origin": "working-tree"
     },
     {
@@ -33,8 +33,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "aa76ced2f6014b067f19273efa8a4ea85453df9d477d47622ac899c5d2694acf",
-      "bytes": 5667,
+      "sha256": "328e5710f0ef49fc550e38fa7f96b18afc46f38c2431fe8ac69296fce0939298",
+      "bytes": 9023,
       "origin": "candidate-specific"
     },
     {
@@ -111,32 +111,32 @@
     },
     {
       "path": "docker-compose.yml",
-      "sha256": "8aa8e4f4e03ca7e1f569aa417caa81614203d5cfbdb758723de974235deedfda",
-      "bytes": 8152,
+      "sha256": "4eb9a9069db85fe3db85655a9707692a752d213af39817da49e5f157ec8da196",
+      "bytes": 8184,
       "origin": "working-tree"
     },
     {
       "path": "docs/DEVELOPMENT.md",
-      "sha256": "f90ee4c6915feb216c1963800865e171f881f474f09b1b55b270e5e314cd35cc",
-      "bytes": 3646,
+      "sha256": "adee57bf52fc5c27eb975a240cc3c0b4ae50ebaa77f064b64d559cd3cab58c30",
+      "bytes": 4723,
       "origin": "candidate-specific"
     },
     {
       "path": "docs/PORTFOLIO.md",
-      "sha256": "b351aa4b2b32232270fd7a485f91fdd728b8c86256dac9734f09634d9501f2a0",
-      "bytes": 1025,
+      "sha256": "c152e40610c671579c2c27a585b3d60471f1899af01f835f5ff88a452f447c94",
+      "bytes": 3016,
       "origin": "candidate-specific"
     },
     {
       "path": "docs/RELEASE_READINESS.md",
-      "sha256": "935885a91a55d4485755916b37dc430e6a71bc509a0cfe5ed8bb0aa6159cc2b6",
-      "bytes": 1936,
+      "sha256": "9ddba4629964e2691b79b8d26418c49314ef951f06f8769cf47635d5778d6bfb",
+      "bytes": 3715,
       "origin": "candidate-specific"
     },
     {
       "path": "docs/SECURITY.md",
-      "sha256": "7a2303c3e4b0dc732a4240e46928a94bf8580c132460890a3a93108231917c33",
-      "bytes": 4922,
+      "sha256": "2965941edd30eb6313095fb002ed297a228111a910fc11a315bf17d18fc8329f",
+      "bytes": 6442,
       "origin": "candidate-specific"
     },
     {
@@ -362,11 +362,11 @@
     },
     {
       "category": "Original LICENSE authorship and upstream dataset terms",
-      "disposition": "MIT license retained; no third-party dataset distributed; confirm rights before adding data"
+      "disposition": "Owner confirmed MIT publication rights and commit-author metadata disclosure on 2026-11-08; no upstream data or media redistributed."
     },
     {
       "category": "Historical credential response and runtime security",
-      "disposition": "Operator approval gates; not resolved by export"
+      "disposition": "Operational A/B recovery verified on 2026-11-06; final source/history scanning, exact-SHA CI and separate public-release approval remain required."
     }
   ]
 }

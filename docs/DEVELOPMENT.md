@@ -11,16 +11,23 @@ uv sync --locked --python 3.12
 ```
 
 Installation needs network access or a populated cache. The verification workload
-is offline. The local candidate review reused an existing dependency environment;
-a fresh installation and hosted GitHub Actions run remain manual gates.
-Do not run installation without authorization where network use is restricted.
+is offline. A prior clean Python 3.12 locked installation and the initial root-commit
+hosted CI run passed. Final local results and exact-commit hosted CI are tracked
+separately in [release evidence](RELEASE_READINESS.md).
 
 ```bash
 env -u RUN_TRINO_ICEBERG_TESTS uv run --no-sync python -W error -m unittest discover -s tests -v
-uv run --no-sync python scripts/verify_candidate.py
+# The comprehensive verifier deliberately accepts pristine source exports only.
+# Reuse this checkout's locked interpreter, but exclude Git metadata and caches.
+VERIFY_EXPORT=$(mktemp -d)
+git archive HEAD | tar -x -C "$VERIFY_EXPORT"
+env -u RUN_TRINO_ICEBERG_TESTS uv run --no-sync python "$VERIFY_EXPORT/scripts/verify_candidate.py"
 ```
 
-The comprehensive verifier blocks outbound Python connections, runs unittest,
+The comprehensive verifier runs on the committed HEAD export above, not on
+uncommitted edits. Release preparation separately verifies the final intended
+working-tree bytes against the manifest before committing. The verifier blocks
+outbound Python connections, runs unittest,
 compiles/parses dbt with introspection disabled, validates Dagster lineage,
 validates Compose using dummy inputs, and checks the export manifest. It never
 loads .env. Temporary logs and outputs are outside the candidate; it briefly
@@ -58,12 +65,23 @@ Generated artifacts are ignored; do not overwrite retained runtime evidence.
 
 ## Optional live demonstration
 
-Read SECURITY.md first and use a disposable, isolated environment. Supply private
+Read [SECURITY.md](SECURITY.md) first and use a disposable, isolated environment. Supply private
 credentials explicitly; Compose's .env does not export them to host Dagster.
 Run dbt parse before loading Dagster definitions outside dagster dev. A full
 pipeline run downloads public taxi data, creates schemas/tables and writes the
 first 10,000 rows plus transformations. It is not part of offline verification.
 The four live acceptance cases also write isolated objects and retain them;
-see ../tests/integration/README.md before separately authorizing execution.
+see [integration instructions](../tests/integration/README.md) before separately
+authorizing execution.
 Never reuse an existing persistent environment for a demonstration without a
 maintenance plan, backups and explicit permission.
+
+## Deployment scope
+
+The candidate keeps a minimal six-input local template. Use a privately
+provisioned non-root, warehouse-scoped S3 identity; it does not create IAM users.
+The separately verified operational deployment has per-consumer identities,
+pinned images and a private launcher. Those private settings are not exported.
+Do not run this template against existing fixed container names or volumes
+without a separately approved maintenance plan. Existing PostgreSQL passwords
+must be changed at the database level, not by editing environment inputs alone.

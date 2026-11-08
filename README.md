@@ -1,6 +1,6 @@
 # Local Lakehouse Pipeline
 
-A local data engineering project that ingests a January 2024 NYC yellow taxi Parquet delivery into an Iceberg table, then builds filtered trip records and daily aggregates with dbt. It explores the boundary between object storage, a metadata catalog, SQL execution and orchestration without relying on a managed lakehouse service.
+A local data engineering project that ingests the first 10,000 occurrences from a January 2024 NYC yellow taxi Parquet delivery into Iceberg, then builds filtered trip records and daily aggregates with dbt. It explores the boundary between object storage, a metadata catalog, SQL execution and orchestration without relying on a managed lakehouse service.
 
 ```mermaid
 flowchart LR
@@ -45,23 +45,55 @@ For a safe synthetic demonstration, run the offline suite above and inspect `tes
 
 Read [development and deployment guidance](docs/DEVELOPMENT.md) before starting or changing services. Provision the required values privately using the empty [.env.example](.env.example); do not put credentials in Git. Compose supplies MinIO, PostgreSQL, REST catalog and Trino; Dagster is host-launched. Run dbt parse before importing Dagster definitions in a clean checkout. The Dagster full pipeline downloads real public taxi data and writes tables; use a disposable, explicitly approved environment for a live demonstration.
 
-## Security and verification status
+## Verified outcomes and evidence boundaries
 
-This source-only candidate contains no Git history, credentials or datasets.
-Offline verification exercises code contracts; it does not establish production
-security or live service health. Host ports bind loopback, but containers share a
-network and Trino/REST use internal HTTP without client authentication. Use an
-isolated development machine. Do not expose this stack to an untrusted network.
+| Evidence | Result | What it establishes |
+| --- | --- | --- |
+| Offline Python suite | 70 PASS; four live write tests skipped | Synthetic acquisition, serialization, replay and failure/retry contracts; no services or credentials. |
+| Offline dbt | 11 reusable tests / 12 with acceptance enabled | Parsing, compilation, discovery and schema routing; no SQL execution. |
+| Dagster source validation | Five assets, ingestion/full jobs and lineage validated | Definitions and dependencies load; no materialization. |
+| Controlled operational acceptance, 2026-11-06 | Raw 10,000; Silver 9,737; Gold 2; 12 dbt PASS | Existing sample tables reconciled in a separately operated local deployment. |
+| Operational security recovery, 2026-11-06 | A and B complete | Exposed MinIO/S3 and PostgreSQL credentials rejected; replacement consumers worked; anonymous warehouse access denied. |
 
-Credentials are required external inputs. Initialization creates a missing bucket
-without adding public access; it does not revoke a policy persisted by an existing
-deployment. Existing installations require backed-up, explicitly authorized
-activation and access verification. See [security guidance](docs/SECURITY.md).
-Prior credential exposure response remains an operator gate before publication.
+The operational checks also verified 204 unchanged object hashes, 11 readable
+Iceberg tables and preserved Dagster history. They are historical evidence from
+a separate deployment, not a fresh end-to-end run of this checkout. No full
+Dagster materialization ran during that security verification. The four gated
+write integration tests remain unexecuted; their simulations and the read-only
+dbt acceptance suite are different checks. Private recovery records are excluded.
+
+This repository has independent, source-only commit ancestry; original Git
+history, credentials, runtime databases and datasets are excluded. See
+[release evidence](docs/RELEASE_READINESS.md) for current local checks, dedicated
+Gitleaks scans and the distinction between initial and final-commit hosted CI.
+
+## Security and operational limits
+
+Host ports bind loopback, while containers share an HTTP network. REST and Trino
+frontend authentication is not configured. The existing catalog database role
+retains elevated privileges, and operational backups are local and unencrypted.
+These limitations are disclosed, not resolved by publishing source. Use an
+isolated development machine; the project is not production-ready.
+
+The deployment template requires empty-by-default external credentials and does
+not provision IAM users. It passes one non-root warehouse S3 pair to its clients;
+the separately hardened operational deployment uses independent scoped consumer
+identities. Do not infer that its private runtime configuration is included here.
+Initialization creates a missing bucket without granting anonymous access and
+does not revoke policies already persisted in an existing installation. Read
+[security guidance](docs/SECURITY.md) before any live deployment.
+
+Only the first 10,000 ordered source occurrences are ingested. Acquisition and
+the current reader can still download/read the complete monthly Parquet file.
+Full-month ingestion, production-scale performance and general concurrent-writer
+safety are unverified. Writers must be serialized; batch commits are separate,
+and failures can leave a partial load until replay. SHA-256 identifies observed
+bytes; sampled Parquet validation does not prove upstream authenticity or decode
+every data page.
 
 ## Tradeoffs and next steps
 
-The design favors transparent SQL and replayable batches over parallel ingestion and multi-file versioning. Offline mocks exercise the client contract but cannot prove Iceberg concurrency, runtime authentication or deployed service health. Future work includes scoped service identities, authenticated service transport, immutable image digests, automated deployment acceptance, serialized writers, and a reviewed multi-delivery ingestion policy.
+The design favors transparent SQL and replayable batches over parallel ingestion and multi-file versioning. Offline mocks exercise the client contract but cannot prove Iceberg concurrency, runtime authentication or deployed service health. Future template work includes per-consumer IAM provisioning, authenticated service transport, immutable image digests, automated deployment acceptance and a reviewed multi-delivery ingestion policy. Independent scoped identities and pinned images were verified in the separate operational recovery; they are not automatically reproduced by this template.
 
 The latest [verification evidence and release gates](docs/RELEASE_READINESS.md) distinguish offline results from pending infrastructure checks.
 
@@ -70,3 +102,17 @@ For a concise walkthrough, see [the synthetic demo](docs/DEVELOPMENT.md#syntheti
 [Verification and release gates](docs/RELEASE_READINESS.md), the
 [publication manifest](PUBLICATION_MANIFEST.json), and
 [CV project bullets](docs/PORTFOLIO.md) accompany the candidate.
+
+## Source, attribution and license
+
+Project code and documentation use the [MIT license](LICENSE), with the retained
+2026 James copyright notice. The owner confirmed publication rights and public
+commit-author metadata disclosure on 2026-11-08. Third-party tools and dependencies
+remain under their own licenses; this repository does not vendor their source.
+The architecture diagram is Mermaid source describing this implementation.
+
+Runtime input comes from the [NYC TLC Trip Record Data page](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page),
+specifically the January 2024 Yellow Taxi Parquet delivery. No taxi records,
+Parquet files, map images or other external dataset assets are redistributed.
+The source-code MIT license does not assign rights to upstream data. Review
+upstream notices and terms for any later data redistribution.
